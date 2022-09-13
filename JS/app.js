@@ -1,41 +1,41 @@
-const cuenta =  [];
+let cuenta = [];
 
-function nombre() {
-  let nombrecomp = prompt("ingresa tu nombre de usuario");
-  cuenta.push({ id: "nombre", nombrecomp});
-  while(nombrecomp.length <= 5) {
-    alert("es un nombre muy corto");
-    nombrecomp = prompt("ingresa tu nombre de usuario");
-    cuenta.push({ id: "nombre", nombrecomp});
+class info {
+  constructor(name, pass, email) {
+    this.name = name;
+    this.pass = pass;
+    this.email = email;
   }
-  if (nombrecomp.length >= 5) {email();}
 }
+//clase y array para almacenar la informacion del usuario
 
-function email() {
-  let mail = prompt("ingresa tu email");
-  cuenta.push({ id: "mail", mail});
-  password();
+function guardar() {
+  let name = document.getElementById('name').value;
+
+  let pass = document.getElementById('pass').value;
+
+  let email = document.getElementById('email').value;
+
+  let crear = cuenta.push(new info(name, pass, email));
+
+  console.log(cuenta);
+  
+  modre();
 }
+//guardar los datos de la cuenta y finaliza el registro
 
-function password() {
-  let pass = prompt("ingresa una contraseña");
-  cuenta.push({ id: "contraseña", pass});
-  let check = prompt("confirma tu contraseña"); 
-  while(check != `${pass}`){
-    alert("la contraseña no coincide");
-    pass = prompt("ingresa una contraseña");
-    cuenta.push({ id: "contraseña", pass});
-    check = prompt("confirma tu contraseña");
-  }
-  if (check == `${pass}`) {finish();}
-}
-
-function finish() {
-  alert("registro terminado");
-  console.log(cuenta)
-}
-
-
-nombre();
-
-
+ function modre() {
+  const borrarR = document.getElementById("borrarR");
+  
+  borrarR.remove();
+  
+  const titulo = document.getElementById("titulo").textContent = "¡GRACIAS!";
+  
+  const cambiar = document.getElementById("cambiar").textContent = "El registro esta terminado, da click en Continuar para dirigirte a la pagina principal";
+  
+  const Nbtn = document.getElementById("Nbtn");
+  
+  Nbtn.innerHTML = '<button class="btn btn-outline-light btn-lg px-5" type="button">Continuar!</button>'
+ }
+ //modifica el html  
+ //En el futuro Nbtn enviara al usuario a la pagina principal
