@@ -35,7 +35,8 @@ function guardar() {
   
   const Nbtn = document.getElementById("Nbtn");
   
-  Nbtn.innerHTML = '<button class="btn btn-outline-light btn-lg px-5" type="button">Continuar!</button>'
+  Nbtn.innerHTML = '<button class="btn btn-outline-light btn-lg px-5" type="submit">Continuar!</button>'
  }
  //modifica el html  
- //En el futuro Nbtn enviara al usuario a la pagina principal
+
+ //En el futuro Nbtn enviara al usuario a la pagina principal 
