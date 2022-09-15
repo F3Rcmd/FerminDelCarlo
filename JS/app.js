@@ -35,8 +35,12 @@ function guardar() {
   
   const Nbtn = document.getElementById("Nbtn");
   
-  Nbtn.innerHTML = '<button class="btn btn-outline-light btn-lg px-5" type="submit">Continuar!</button>'
- }
- //modifica el html  
+  Nbtn.innerHTML ='<button class="btn btn-outline-light btn-lg px-5" type="submit" id="btnContinuar">Continuar!</button>';
 
- //En el futuro Nbtn enviara al usuario a la pagina principal 
+  let btnContinuar = document.getElementById("btnContinuar");
+
+  btnContinuar.addEventListener("click", () => {
+    window.location.assign("pages/productos.html");
+  });
+ }
+ //modifica el html y redirige a otra pagina apartir de un evento 
