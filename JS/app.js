@@ -18,11 +18,15 @@ function guardar() {
 
   let crear = cuenta.push(new info(name, pass, email));
 
+  const almacenar = JSON.stringify(cuenta);
+
+  localStorage.setItem("Dcuenta", almacenar);
+
   console.log(cuenta);
   
   modre();
 }
-//guardar los datos de la cuenta y finaliza el registro
+//guardar los datos de la cuenta, los almacena en un json y finaliza el registro
 
  function modre() {
   const borrarR = document.getElementById("borrarR");
