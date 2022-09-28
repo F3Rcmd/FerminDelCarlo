@@ -10,13 +10,9 @@ class info {
 
 const almacen = JSON.parse(localStorage.getItem("Dcuenta"));
 
-for (const datos of almacen) {
-  cuenta.push(datos);
-}
+const { 0: {name, pass, email} } = almacen
+ 
+document.getElementById("titulo").textContent = "Bienvenido " + name; 
 
-cuenta.forEach(dato => {
-  document.getElementById("titulo").textContent = "Bienvenido " + dato.name; 
-});
-
-/* toma los datos del storage y los envia al array cuenta console.log(dato.name); */
+/* toma los datos del storage y los envia al array cuenta */
 

@@ -9,7 +9,26 @@ class info {
 }
 //clase y array para almacenar la informacion del usuario
 
-function guardar() {
+function vername() {
+  let name = document.getElementById('name').value;
+
+  let email = document.getElementById('email').value;
+
+  const valida = (name.length < 6 ) ? true : false
+
+  valida ? alert("demaciado corta") : verpass()
+}
+
+function verpass() {
+  let pass = document.getElementById('pass').value;
+
+  const valida = (pass.length < 6) ? true : false
+
+  valida ? alert("demaciado corta") : almacenar()
+}
+
+function almacenar() {
+
   let name = document.getElementById('name').value;
 
   let pass = document.getElementById('pass').value;
@@ -21,8 +40,6 @@ function guardar() {
   const almacenar = JSON.stringify(cuenta);
 
   localStorage.setItem("Dcuenta", almacenar);
-
-  console.log(cuenta);
   
   modre();
 }
