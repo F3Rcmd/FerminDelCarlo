@@ -10,9 +10,12 @@ class info {
 
 const almacen = JSON.parse(localStorage.getItem("Dcuenta"));
 
-const { 0: {name, pass, email} } = almacen
+const { 0: {name:nombre, pass:contra, email:mail} } = almacen
  
-document.getElementById("titulo").textContent = "Bienvenido " + name; 
+document.getElementById("titulo").textContent = "Bienvenido " + nombre; 
 
 /* toma los datos del storage y los envia al array cuenta */
 
+function alerta() {
+  Swal.fire('Any fool can use a computer')  
+}
