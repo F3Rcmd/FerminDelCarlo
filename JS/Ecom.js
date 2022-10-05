@@ -19,3 +19,21 @@ document.getElementById("titulo").textContent = "Bienvenido " + nombre;
 function alerta() {
   Swal.fire('Any fool can use a computer')  
 }
+
+const muestra = document.getElementById("api")
+
+const apinfo = async()=>{
+    const recibe = await fetch('https://jsonplaceholder.typicode.com/posts')
+    const devuelve = await recibe.json()
+
+    devuelve.forEach((post)=>{
+        const li = document.createElement("li")
+        li.innerHTML=`
+        <h4>${post.id}</h4>
+        <h5>${post.title}</h5>
+        `
+        muestra.append(li)
+    })
+}
+
+apinfo();
