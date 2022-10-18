@@ -38,6 +38,8 @@ function prod3() {
   carro.push(item3);
 }
 
+/* Agregra prodcutos al carro*/
+
 function Dprod1() {
   carro = carro.filter(prod => prod.precio !== 1000);
 }
@@ -49,6 +51,8 @@ function Dprod2() {
 function Dprod3() {
   carro = carro.filter(prod => prod.precio !== 3000);
 }
+
+/* Quita los productos del carro*/
 
 const deseados = document.getElementById("Deseados");
 
@@ -73,11 +77,15 @@ function show() {
   <b>${total}$</b>`
 }
 
+/* Muestra la lista de productos y el valor total*/
+
 function erase() {
   deseados.innerHTML = " ";
   
   mostrarF.innerHTML = " ";
 }
+
+/* evita que se repitan productos y el total*/
 
 function Dall() {
   carro = [];
@@ -86,6 +94,8 @@ function Dall() {
   
   mostrarF.innerHTML = " ";
 }
+
+/* vacia le carro*/
 
 function comprar() {
 const swalWithBootstrapButtons = Swal.mixin({
@@ -122,6 +132,8 @@ swalWithBootstrapButtons.fire({
   }
 })
 };
+
+/* simulacion de confirmacion de la compra*/ 
 
 
 

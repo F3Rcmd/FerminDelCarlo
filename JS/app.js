@@ -27,6 +27,8 @@ function verpass() {
   valida ? alert("demaciado corta") : almacenar()
 }
 
+//verifica que se ingrecen nombre/contraseña y que tengan al menos mas de 6 caracteres  
+
 function almacenar() {
 
   let name = document.getElementById('name').value;
