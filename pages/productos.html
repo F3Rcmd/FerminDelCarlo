@@ -13,20 +13,76 @@
 
 <body class="vh-100 gradient-custom">
 
-<h1 id="titulo">.</h1>
-<!-- este titulo diria "bienvenido + (el nombre de usuario que figura en la array)"-->
+<div class="container-lg card bg-dark text-white">	
+<h1 id="titulo" class="card-title container-fluid bg-dark text-white">.</h1>
+<br>
+    <div class="container-fluid card-link">
+        <button class="btn btn-outline-light" type="button" data-bs-toggle="offcanvas" data-bs-target="#staticBackdrop" aria-controls="staticBackdrop" onclick="show();">Carrito</button>
+    </div>
+<br>
+</div>
 
-<button class="btn btn-outline-light btn-lg px-5" type="button" name="btn" id="btn" onclick="alerta();">alerta</button>
-<!-- ejemplo de funcionamiento (se cambia mas adelante)-->
+<div class="offcanvas offcanvas-start text-bg-dark" data-bs-backdrop="static" tabindex="-1" id="staticBackdrop" aria-labelledby="staticBackdropLabel">
+	<div class="offcanvas-header">
+		<h5 class="offcanvas-title">Carrito</h5>
+		<button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close" onclick="erase();"></button>
+    </div>
+	<div class="offcanvas-body">
+		<div>
+			<button class="btn btn-outline-light" type="button" data-bs-dismiss="offcanvas" aria-label="Close" onclick="comprar();">Comprar</button>
+			<button class="btn btn-outline-light" type="button" onclick="Dall();">Vaciar</button>
+			<div id="mostrarfinal"></div>
+		</div>
+		<br>
+		<div id="Deseados"></div>
+	</div>
+</div>
+<!-- Contenido de off canvas -->
 
-<div id="api"></div>
+<div class="d-flex justify-content-around flex-row">
+	<div class="col">
+    <div class="card bg-dark text-white" style="width: 18rem;">
+        <img src="../pngs/Leñero.jpeg" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">Producto 1</h5>
+            <p class="card-text">1000$</p>
+            <button class="btn btn-outline-light" type="button" onclick="prod1();">Agregar</button>
+            <button class="btn btn-outline-light" type="button" onclick="Dprod1();">Eliminar</button>
+        </div>
+    </div>
+	</div>
+	<div class="col">
+    <div class="card bg-dark text-white" style="width: 18rem;">
+        <img src="../pngs/Leñero.jpeg" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">Producto 2</h5>
+            <p class="card-text">2000$</p>
+            <button class="btn btn-outline-light" type="button" onclick="prod2();">Agregar</button>
+            <button class="btn btn-outline-light" type="button" onclick="Dprod2();">Eliminar</button>
+        </div>
+    </div>
+	</div>
+	<div class="col">
+    <div class="card bg-dark text-white" style="width: 18rem;">
+        <img src="../pngs/Leñero.jpeg" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">Producto 3</h5>
+            <p class="card-text">3000$</p>
+            <button class="btn btn-outline-light" type="button" onclick="prod3();">Agregar</button>
+            <button class="btn btn-outline-light" type="button" onclick="Dprod3();">Eliminar</button>
+        </div>
+    </div>
+	</div>
+</div>
 
 <script src="../JS/Ecom.js"></script>
 <!-- JS del proyecto -->
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <!-- Jquery -->
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<!-- Sweetalert2-->
+<!-- Sweetalert2 -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+<!-- Boostrap -->
 </body>
 
 </html>
