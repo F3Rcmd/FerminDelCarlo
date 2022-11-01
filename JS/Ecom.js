@@ -22,11 +22,11 @@ let carro = [];
 let precioFinal = [];
 
 const ListaProd = [
-{ id: 0, nombre: "Producto 1", precio: 1000, foto: "../pngs/Leñero.jpeg", },
+{ id: 0, nombre: "Producto 1", precio: 1000, foto: "../pngs/placeholder.png", },
 
-{ id: 1, nombre: "Producto 2", precio: 2000, foto: "../pngs/Leñero.jpeg", },
+{ id: 1, nombre: "Producto 2", precio: 2000, foto: "../pngs/placeholder.png", },
 
-{ id: 2, nombre: "Producto 3", precio: 3000, foto: "../pngs/Leñero.jpeg", }
+{ id: 2, nombre: "Producto 3", precio: 3000, foto: "../pngs/placeholder.png", }
 ];
 
 const origen = document.getElementById("ContProductos");
