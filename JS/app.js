@@ -41,7 +41,8 @@ function almacenar() {
 
   const almacenar = JSON.stringify(cuenta);
 
-  localStorage.setItem("Dcuenta", almacenar);
+  sessionStorage.setItem("Dcuenta", almacenar);
+  //SessionStorage corregido
   
   modre();
 }

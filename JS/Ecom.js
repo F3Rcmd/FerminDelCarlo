@@ -8,7 +8,8 @@ class info {
   }
 }
 
-const almacen = JSON.parse(localStorage.getItem("Dcuenta"));
+const almacen = JSON.parse(sessionStorage.getItem("Dcuenta"));
+//SessionStorage Corregido
 
 const { 0: {name:nombre, pass:contra, email:mail} } = almacen
  
@@ -20,53 +21,104 @@ let carro = [];
 
 let precioFinal = [];
 
-function prod1() {
-  const item1 = { id: 1, nombre: "Producto 1", precio: 1000 }
+const ListaProd = [
+{ id: 0, nombre: "Producto 1", precio: 1000, foto: "../pngs/Leñero.jpeg", },
 
-  carro.push(item1);
+{ id: 1, nombre: "Producto 2", precio: 2000, foto: "../pngs/Leñero.jpeg", },
+
+{ id: 2, nombre: "Producto 3", precio: 3000, foto: "../pngs/Leñero.jpeg", }
+];
+
+const origen = document.getElementById("ContProductos");
+
+function mostrarP() {
+  ListaProd.forEach((info)=> {
+    const contenedor = document.createElement("div");
+    contenedor.classList.add("d-flex", "justify-content-around", "flex-row");
+
+    const columna = document.createElement("div");
+    columna.classList.add("col");
+
+    const carta = document.createElement("div");
+    carta.classList.add("card", "bg-dark", "text-white");
+
+    const imagen = document.createElement("img");
+    imagen.classList.add("card-img-top", "img-fluid");
+    imagen.setAttribute("src", info.foto);
+
+    const cuerpo = document.createElement("div");
+    cuerpo.classList.add("card-body");
+
+    const titulo = document.createElement("h5");
+    titulo.classList.add("card-title");
+    titulo.textContent = info.nombre;
+
+    const valor = document.createElement("p");
+    valor.classList.add("card-text");
+    valor.textContent = info.precio + "$";
+
+    const btn = document.createElement("button");
+    btn.classList.add("btn", "btn-outline-light");
+    btn.setAttribute("id", info.id);
+    btn.textContent = "Agregar";
+    btn.addEventListener("click", prod);
+
+    carta.appendChild(imagen);
+    carta.appendChild(cuerpo);
+    carta.appendChild(titulo);
+    carta.appendChild(valor);
+    carta.appendChild(btn);
+    columna.appendChild(carta);
+    contenedor.appendChild(columna);
+    origen.appendChild(contenedor);
+  });
 }
+//Prodcutos corregidos
 
-function prod2() {
-  const item2 = { id: 2, nombre: "Producto 2", precio: 2000 }
+function prod(e) {
+  e.preventDefault();
 
-  carro.push(item2);
+  alertify.success("Producto Agregado!");
+
+  const seleccionar = e.target.getAttribute("id");
+
+  const encontrar = ListaProd.find((item) => item.id == seleccionar);
+
+  carro.push(encontrar)
 }
+//agrega los productos
 
-function prod3() {
-  const item3 = { id: 3, nombre: "Producto 3", precio: 3000 }
+function Eprod() {
+  alertify.error("Producto Eliminado!");
 
-  carro.push(item3);
+  carro.shift()
+
+  erase();
+
+  show();
 }
-
-/* Agregra prodcutos al carro*/
-
-function Dprod1() {
-  carro = carro.filter(prod => prod.precio !== 1000);
-}
-
-function Dprod2() {
-  carro = carro.filter(prod => prod.precio !== 2000);
-}
-
-function Dprod3() {
-  carro = carro.filter(prod => prod.precio !== 3000);
-}
-
-/* Quita los productos del carro*/
+//eliminar el primer producto
 
 const deseados = document.getElementById("Deseados");
 
 const mostrarF = document.getElementById("mostrarfinal");
 
 function show() {
-  for (producto of carro) {
-    let lista = document.createElement("div");
-    lista.innerHTML = `
-    <h4>${producto.nombre}</h4>
-    <b>${producto.precio}$</b>
-    `;
-    deseados.appendChild(lista);
-  }
+  carro.forEach((info)=> {
+    const infocon = document.createElement("div");
+    infocon.setAttribute("id", info.id);
+
+    const infon = document.createElement("h4");
+    infon.textContent = info.nombre;
+
+    const infop = document.createElement("b");
+    infop.textContent = info.precio + "$";
+
+    infocon.appendChild(infon);
+    infocon.appendChild(infop);
+    deseados.appendChild(infocon);
+  })
+
 
   const total = carro.map(prod => prod.precio).reduce((ant, act) => ant + act,);
 
@@ -97,6 +149,13 @@ function Dall() {
 
 /* vacia le carro*/
 
+function cargar() {
+  localStorage.setItem("registro", carro);
+ 
+  Dall();
+}
+//localStorage Agregado
+
 function comprar() {
 const swalWithBootstrapButtons = Swal.mixin({
   customClass: {
@@ -115,16 +174,16 @@ swalWithBootstrapButtons.fire({
   cancelButtonText: 'No...',
   reverseButtons: true
 }).then((result) => {
-  if (result.isConfirmed) {
-    swalWithBootstrapButtons.fire(
+  if (result.isConfirmed) 
+    { cargar();
+      swalWithBootstrapButtons.fire(
       'De acuerdo!',
       'Verifica si tu mail para continuar.',
       'success'
-    )
-  } else if (
-    result.dismiss === Swal.DismissReason.cancel
-  ) {
-    swalWithBootstrapButtons.fire(
+    )} 
+    else if (result.dismiss === Swal.DismissReason.cancel) 
+    {erase();
+      swalWithBootstrapButtons.fire(
       'Cancelada',
       'La compra no sea realizado',
       'error'
@@ -134,6 +193,8 @@ swalWithBootstrapButtons.fire({
 };
 
 /* simulacion de confirmacion de la compra*/ 
+
+mostrarP();
 
 
 
